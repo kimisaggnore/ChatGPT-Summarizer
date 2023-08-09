@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    {% if activate_script %} 
+    <script>
+        fetch("run_iteration");
+    </script>
+    {% endif %}
+
+    <title>Form Submission Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #555555;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>File Submission Confirmation</h1>
+        <p>Your file has been successfully received.</p>
+        <p>Click the "summarize" button to begin</p>
+
+        <p>PDF file was successfully processed. Summarizing will now begin</p>
+
+        {% if uploaded_file_url %}
+        <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+
+        <form method="POST" action = "/form">
+            {% csrf_token %}
+            <button type="submit" id = "ret_to_form">Return To Form</button>
+        </form>
+        {% endif %}
+        
+    </div>
+
+
+    <!-- <script>
+        $(document).ready(function() {
+            $('#submitBtn').click(function() {
+                $(this).prop('disabled', true);  // Disable the button
+                $(this).form.submit();
+            });
+        });
+    </script> -->
+</body>
+</html>

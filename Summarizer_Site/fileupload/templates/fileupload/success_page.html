@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+
+
+        function updatePage() {
+        fetch('fetch_progress')
+            .then(response => response.json())
+            .then(data => {
+                // Update the page based on the file existence status
+                
+                let progress = data.progress
+                let batch_estimate = Math.ceil(Math.log(1/Number(progress))/Math.log(1/4))
+                if (progress != "no" && progress != "preprocessing" && progress != "postprocessing" ){
+                    document.getElementById('file-status').innerText = "There are " + progress + " chunks of text in this batch.";
+                    if (data.progress_2){
+                        document.getElementById('file-status_2').innerText = "Currently processing " + data.progress_2 + "/" + progress + " chunks of the batch.";
+                    }
+                    document.getElementById('file-status_3').innerText = "There is an estimated number of " + batch_estimate + " total batches.";
+                } else {
+                    document.getElementById('file-status').innerText = "";
+                }
+                if (progress == "preprocessing"){
+                    document.getElementById('file-status').innerText = "Currently Preprocessing PDF"
+                    document.getElementById('file-status_2').innerText = ""
+                    document.getElementById('file-status_3').innerText = ""
+                }
+                if (progress == "postprocessing"){
+                    document.getElementById('file-status').innerText = "Now Beginning Main Process"
+                    document.getElementById('file-status_2').innerText = ""
+                    document.getElementById('file-status_3').innerText = ""
+                }
+
+
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+    updatePage();
+    setInterval(updatePage, 1000);
+    </script>
+
+    <title>Form Submission Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #555555;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- <form method="POST" id = "upload_new_file" action = "/return_to_upload">
+            {% csrf_token %}
+            <button type="submit">Return To File Upload</button>
+        </form> -->
+        <h1>File Submission Confirmation</h1>
+        <p>Your file has been successfully received.</p>
+        <p>Click the "summarize" button to begin</p>
+        {% if show_form %}
+        <form method="POST" action = "/success_page">
+            {% csrf_token %}
+            <button type="submit" id = "submitBtn">Summarize</button>
+        </form>
+        {% endif %}
+
+        <p id="file-status"></p>
+        <p id="file-status_2"></p>
+        <p id="file-status_3"></p>
+        <!-- {%if show_message %}
+            {% if valid %}
+            <p>PDF file was successfully processed. Summarizing will now begin</p>
+            {% else %}
+            <p>PDF file could not be processed.</p>
+            <form method="POST" action = "/form">
+                {% csrf_token %}
+                <button type="submit" id = "ret_to_form">Return To Form</button>
+            </form>
+            {% endif %}
+        {% endif %} -->
+
+        {% if uploaded_file_url %}
+        <p> It is preferable if you open the link in a new tab. (right click -> open link in new tab)</p>
+        <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+        <form method="POST" action = "/form">
+            {% csrf_token %}
+            <button type="submit" id = "ret_to_form">Return To Form</button>
+        </form>
+        {% endif %}
+        
+    </div>
+
+
+    <!-- <script>
+        $(document).ready(function() {
+            $('#submitBtn').click(function() {
+                $(this).prop('disabled', true);  // Disable the button
+                $(this).form.submit();
+            });
+        });
+    </script> -->
+</body>
+</html>

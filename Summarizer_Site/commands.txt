@@ -1,0 +1,74 @@
+Client sends request to server, server responds to client.
+Client: React, Angular, Vue
+Server: Django
+
+Endpoints: /products, /orders
+Server provides an application programming interface
+
+!django-admin startproject {name} . 
+-Creates a django project using the current directory as the root.
+
+!python manage.py runserver
+-Runs the webpage in the port
+
+!python manage.py startapp {name}
+-Creates an app in the current directory with the name inside {name}.
+
+Everytime you create a new app, you would need to add that app's configuration inside the settings.py file. 
+In your new app's directory, there is a file called apps.py. 
+
+!python manage.py makemigration
+-stages changes.
+
+!python manage.py migrate
+-commits changes.
+
+#path(route, view, (name), (**kwargs)) 
+-where route is a string denoting an url extension
+-where view is a specific application's view
+-optional (name) and (**kwargs) arguments.
+-the route can be in the form '<{type}:{parameter}>', which is considered to be a capturing group and sent to the view as a parameter. 
+- an optional paramter comes in the form of a context. The context is a dictionary that associates different dynamic pieces of the webpage to objects.
+
+Initializing the initial django project will create a urls.py file for you. 
+For subsequent applications, you need to create your own urls.py file if your application
+will end up using webpages.
+
+Urls generally start at the main page, where the array of urls denotes where to search for the final url 
+based on the conditions of the route. The route may either redirect to another set of urls to search, or the view.
+In this case, you can think of is as a tree of urls, where the array size is the number of branches, and the array elements
+are non terminating nodes (non leaf nodes). The view acts as the leaf node, where the view will be shown on screen.
+
+A model is the class that allows us to interact with the database. In the model, we are able to set various fields
+with various types of data.
+
+!python manage.py createsuperuser
+-Creates admin
+
+#__str__(self)
+-is a special method that returns a human readable version of the pages class when python asks for the string
+representation
+
+In the settings file, the the value associated with the DIR key allows you to put paths that points to templates at different parts of your directory.
+The same applies for static files as well.
+
+#{% static {myfile} %} 
+- This tag is equivalent to directing to '/static/myfile'
+
+#render(request, filename)
+- render provides a shortcut with communicating with the browser.
+
+#{% block <name> %}
+#<! -- Replaceable Content -->
+#{% endblock <name> %}
+- Creates a block of html that can be replaced by any child that inherits the parent block.
+
+{%extends {filename} %}
+-Tells Django to inherit base template. This allows other templates to inherit templates, and then just change the replaceable parts of the file as needed.
+
+
+#{% autoescape off %}
+#{% endautoescape %}
+-Stops Django from autoescaping 
+
+  <!-- <p><a href="{% url 'home' %}">Return to home</a></p> -->

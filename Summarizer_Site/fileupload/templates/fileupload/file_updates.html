@@ -1,0 +1,43 @@
+<!-- file_updates.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Updates</title>
+</head>
+<body>
+    <h1>File Updates</h1>
+
+    <ul>
+        {% if uploaded_file_url %}
+        <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+        {% endif %}
+    </ul>
+
+    <script>
+        function checkFileUpdates() {
+            fetch('file_updates')
+                .then(response => response.json())
+                .then(data => {
+                    // Update the file list
+                    const fileList = document.querySelector('ul');
+                    fileList.innerHTML = '';
+                    data.files.forEach(file => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = file;
+                        fileList.appendChild(listItem);
+                    });
+
+                    // Call checkFileUpdates() again after a certain interval
+                    setTimeout(checkFileUpdates, 5000); // Poll every 5 seconds
+                })
+                .catch(error => {
+                    // Handle any errors that occur during the AJAX request
+                    console.error(error);
+                });
+        }
+
+        // Start checking for file updates when the page loads
+        window.addEventListener('DOMContentLoaded', checkFileUpdates);
+    </script>
+</body>
+</html>

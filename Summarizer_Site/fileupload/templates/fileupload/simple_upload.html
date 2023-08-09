@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+  body {
+    /* background-color: hsl(214, 100%, 53%); */
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+  }
+
+  .container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  form {
+    margin-top: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input[type="number"],
+  select,
+  input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+  }
+
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <form method="POST" id = "return_to_login" action = "/">
+    {% csrf_token %}
+    <button type="submit">Return To Login</button>
+  </form>
+  <h1>Document Encapsulator</h1>
+
+  <form enctype="multipart/form-data" method="post" id="my-form" action ="/form">
+
+    {% csrf_token %}
+    <p>The uploaded file type must be a pdf. Do not upload internal company documents or any technical information about devices/systems etc.</p>
+    <input type="file" name="myfile" required>
+    <br><br>
+
+    <label for="summaryLength">Summary Length (number of words):</label>
+    <input type="number" id="summaryLength" name="summaryLength" min="1" value = 100 required><br><br>
+    
+    <label for="detailLevel">Level of Detail:</label>
+    <select id="detailLevel" name="detailLevel">
+      <option value="highLevel">high</option>
+      <option value="detailed">low</option>
+    </select><br><br>
+
+    <label for="lang">Literacy Level</label>
+    <select name="languages" id="lang">
+      <option value="HighSchool">HighSchool</option>
+      <option value="Undergraduate">Undergraduate</option>
+      <option value="Graduate">Graduate</option>
+      <option value="Industry Expert">Industry Expert</option>
+    </select>
+    <br><br>
+  
+    <label for="Tone">Tone</label>
+    <select name="Tone" id="Tone">
+      <option value="Formal">Formal</option>
+      <option value="Technical">Technical</option>
+      <option value="Casual">Casual</option>
+    </select>
+    <br><br>
+  
+    <label for="format">Format</label>
+    <select name="format" id="format">
+      <option value="Paragraph">Paragraph</option>
+      <option value="Bullet Points">Bullet Points</option>
+      <option value="Mind Maps">Mind Maps</option>
+    </select>
+    <br><br>
+
+    <label for="Additional_Information">Additional Information You Want To Provide?:</label>
+    <input type="text" id="Additional_Information" name="AdditionalInformation"><br><br>
+    {% if exceed_limit %}
+    <p>Please shorten the amount of additional information you provided</p>
+    {% endif %}
+<br>
+    <!-- Additional parameters can be added here -->
+    
+    <input type="submit" value="Summarize" id="submit-button">
+    {% if uploaded_file_url %}
+    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+    <!-- <a href="{% static 'path/to/your/file.pdf' %}">Link to File</a> -->
+
+    {% endif %}
+  </form>
+</div>
+
+
+{% endblock %}

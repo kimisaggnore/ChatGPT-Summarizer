@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Error - File Preprocessing</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #e74c3c;
+      font-size: 24px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #e74c3c;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Error - File Preprocessing</h1>
+    <p>Oops! Something went wrong with preprocessing the file. We apologize for the inconvenience.</p>
+    <p>Scanned pdf files and files with tabular data structures and images may pose issues.</p>
+    <form method="POST" id = "return_to_login" action = "/form">
+        {% csrf_token %}
+        <button type="submit">Return To Login</button>
+    </form>
+  </div>
+</body>
+</html>

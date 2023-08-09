@@ -1,0 +1,313 @@
+Written By:  
+Joseph Bachor  Date:  
+8/09/13  
+150 Executive Drive 
+Edgewood, NY 11717 
+(
+631) 242-
+5425Checked By:  
+JOE B.  Date:  
+8/09/13  
+Approved By:  
+JOE M.  Date:  
+8/09/13 Page 1 of 10 
+A INITIAL RELEASE  08/09/13 ECN 
+1580 DOC 
+SIZE 
+ACA
+GE 
+CODE 
+8V139This document is the exclusive property of Introtek 
+International. No use whatsoever of the information contained 
+hereon, nor reproduction in whole or in part may be made 
+without the express written permission of: 
+INTROTEK INTERNATIONAL  105-0002DOC 
+RE
+V 
+A Revision Information Blood Component Detector 
+Interface Reference Manual 
+105-0002
+CAUTION:
+DESCRIBES TESTS TO PARTS AND   
+ASSEMBLIES SUSCEPTIBLE TO DAMAGE BY  
+ELECTRO
+STATIC DISCHARGE (ESD).  
+FILE:105-0002 A.DOC 
+INTROTEK150 Executive Drive 
+Edgewood, NY (631) 242-2450  DOC 
+SIZE 
+AREV 
+DATE 
+8/9/13Th
+is document is the exclusive property of Introtek 
+International. N
+o use whatsoever of the information 
+contained hereon, nor reproduction in whole or in part may 
+be made without the express written permission of: 
+INTROTEK INTERNATIONAL  105-0002DOC 
+REV 
+APage 2 of 10 Blood Component Detector 
+Interface Reference Manual 
+The Blood Component Detector is available in several configur ations. These configurations 
+support different interfaces and are considerat ions based on the intent  or type of design 
+integration.  The confi gurations are as follows: 
+1)Terminal Mode  – Primarily for test and evaluation.  A desktop computer interface provides
+monitoring and set-point control. This configur ation gives good visibilit y and flexibility to the
+functionality of the detector. A detector head, PCB and an RS- 232 cable is supplied with this
+configuration.
+2)Standard Electrical Interface  – Suitable for test and evaluation or OEM applications. A
+detector head is supplied with an external PC B and is operated using point-to-point wiring
+and electrical logic interface.  See page 83)Chip Level Integration  – An integration package is available from Introtek.  This
+integration
+ package defines the el ectrical schematic and bill-of-ma terials. This configuration
+allows electrical components to be consolidated to your main system PCB.  This represents
+the most space efficient and co st effective OEM solution.
+Consult your Introtek Sales Representative for mo re information related to this configuration. 
+The Terminal Mode interface provides RS-232 communication to control and operate the 
+blood component detector.   This is a development t ool to aid in the test and evaluation of the 
+detector.  A user friendly co mmand set is provided on the following page. This command set 
+provides the standard input and output feature necessary to  operate the blood component 
+detector using RS-232.  (A separate command set is available for embedded applications) 
+An RS-232 interface cable is suppl ied by Introtek    that is 
+exclusively for this application.   This cable allows personal 
+computer connectivity, Mac is not supported.  
+Microsoft HyperTerminal application is recommend for this 
+interface. HyperTerminal is prov ided on PC platforms that have 
+Windows 2000 or XP operating system s installed. If Windows 7 or 
+Vista is used Hyper Termi nal must be installed.  
+Sensor Head, PCB, Electrical Interface Cable and RS-232 
+Cable Shown 
+INTROTEK150 Executive Drive 
+Edgewood, NY (631) 242-2450  DOC 
+SIZE 
+AREV 
+DATE 
+8/ 9/13This document is the exclusive property of Introtek 
+Internatio
+nal. No use whatsoever of the information 
+contained hereon, nor reproduction in whole or in part may 
+be made without the express written permission of: 
+INTROTEK INTERNATIONAL  105-0002DOC 
+REV 
+APage 3 of 10 
+Blood Component Detector 
+Terminal Mode 
+The above wiring diagram shows the electrical configuration for termi
+nal mode communication. 
+The Introtek control board (part number 030-7069 programmed with 104-1013 firmware) is 
+required for these purposes. 
+Connect the circuit as shown.  Set power supply to  the correct voltage before it is applied. Load 
+and configure Hyper Terminal.  The Hyper Terminal configuration settings are covered in this 
+document.  Note:  All input and output connections must be made as shown to insure proper operation.
+INTROTEK150 Executive Drive 
+Edgewood, NY (631) 242-2450  DOC 
+SIZE 
+AREV 
+DATE 
+8/9/13Th
+is document is the exclusive property of Introtek 
+International. N
+o use whatsoever of the information 
+contained hereon, nor reproduction in whole or in part may 
+be made without the express written permission of: 
+INTROTEK INTERNATIONAL  105-0002DOC 
+REV 
+APage 4 of 10 Blood Component Detector 
+Terminal Mode 
+To begin in terminal mode comm unication press [ctrl] [U]. 
+To Zero the detector you first insert a segment of  clear tubing into the detector head.  Then load 
+the tubing with clear liquid (saline or water works fine). 
+Press [Z] to zero. It will be necessary to zero the detector perio dically or for each new tube insertion. 
+Without removing the tube replace the clear liquid in the tube with dilute blood content. The dilute blood content should contain the concent ration of blood that r epresents the desired 
+threshold level. Below this concentration no response will occur. Press [C] to calibrate the detector threshol d to the blood component  level in the tube. 
+INTROTEK150 Executive Drive 
+Edgewood, NY (631) 242-2450  DOC 
+SIZE 
+AREV 
+DATE 
+8/9/ 13This document is the exclusive property of Introtek 
+Internationa
+l. No use whatsoever of the information 
+contained hereon, nor reproduction in whole or in part may 
+be made without the express written permission of: 
+INTROTEK INTERNATIONAL  105-0002DOC 
+REV 
+APage 5 of 10 Blood Component Detector 
+Terminal Mode 
+The data refresh rate in Terminal Mode is approxim ately once every 0.5 seconds.  This is slower 
+than when in the Standard UART configur ation for on-screen viewing purposes. 
+The standard UART refresh rate is once every 100ms.
+Terminal Mode User Commands:  
+Ctrl U = Used to initiate communication between computer termina l and Blood Component 
+Detector. 
+Z = ZERO - This will normalize t he detector to zero for a given tube insertion.  Tubing with 
+clear fluid must be present  during this operation. 
+C = CALIBRATE - Allows you to program the detector to a current blood condition. Tubing with 
+your blood threshold should be  present for this operation. Note: The detector must be 
+zeroed prior to this operation. 
+S = SETPOINT - Allows you to manually enter and save a numer ic value threshold set point 
+via the keyboard. The detector will save this value.  The format is SXXX. Where XXX is the 
+desired value from 0 to 870 (leading zeros not required) followed by (Enter). When the set 
+point is changed a G command must be issued  to derive and store the new required LED 
+drive current. 
+T = SELF-TEST - Asserting a self-test will result  in the output reporting a blood co ndition. 
+Note: the detector must be zeroed prior to performing self-test. 
+G = GET SELF-TEST DRIVE - Sets and saves the l ed drive current such that the attenuation 
+achieved during a self-test will be limited to approx imately 40 counts above the set point. This must 
+be reset every time the set point is changed. 
+Note:  Either lower or upper case characters may be sent.  
+INTROTEK150 Executive Drive 
+Edgewood, NY (631) 242-2450  DOC 
+SIZE 
+AREV 
+DATE 
+8/ 9/13This document is the exclusive property of Introtek 
+Internatio
+nal. No use whatsoever of the information 
+contained hereon, nor reproduction in whole or in part may 
+be made without the express written permission of: 
+INTROTEK INTERNATIONAL  105-0002DOC 
+REV 
+APage 6 of 10 
+Blood Component Detector 
+Terminal Mode 
+The following section describes how to configure HyperTerminal for your use. 
+Open the HyperTerminal program. 
+For example on Windows XP: Click Start->All Programs->Accessories ->Communications->HyperTerminal 
+A dialog box will ask if you want to make HyperTerminal your default telnet program, we 
+recommend you click Yes. 
+The “Connection Desc
+ription” window will open.  Enter a connection name and choose an icon for 
+your connection. The only restriction here is it cannot be a device name e.g.  “COM1”   click OK. 
+INTROTEK150 Executive Drive 
+Edgewood, NY (631) 242-2450  DOC 
+SIZE 
+AREV 
+DATE 
+8/ 9/13This document is the exclusive property of Introtek 
+Internatio
+nal. No use whatsoever of the information 
+contained hereon, nor reproduction in whole or in part may 
+be made without the express written permission of: 
+INTROTEK INTERNATIONAL  105-0002DOC 
+REV 
+APage 7 of 10 
+Blood Component Detector 
+Terminal Mode 
+At the bottom of the “Connect To” window is a pull down menu list. Se lect the appropriate 
+communications port for your connection.    Click OK. 
+On the Properties screen there will be sev
+eral pu ll down menus. Configure them as show belo
+w. 
+And then click OK 
+Click -> SAVE to save your changes. 
+INTROTEK150 Executive Drive 
+Edgewood, NY (631) 242-2450  DOC 
+SIZE 
+AREV 
+DATE 
+8/ 9/13This document is the exclusive property of Introtek 
+Internatio
+nal. No use whatsoever of the information 
+contained hereon, nor reproduction in whole or in part may 
+be made without the express written permission of: 
+INTROTEK INTERNATIONAL  105-0002DOC 
+REV 
+APage 8 of 10 
+Blood Component Detector 
+Standard Electrical Interface 
+Power Supply: 
+5.0 VDC @ <50mA for standard 
+configurations.  Damage may occur when applying an over voltage condition. 
+Zero: 
+Zero is to be performed with a tube 
+inserted with clear liquid. Asserting a logic high will normalize the detector for each unique tube insertion.  A 10K pull-up resistor is recommended. 
+Self-Test: 
+Self-Test is to be performed with a tube inserted with clear liquid. Asserting the self-test signal high will simulate a blood condition forcing the Blood Detect output high.  A 10K pull-up resistor is recommended.  
+Note:  All input and output connections 
+must be made as shown to insure 
+proper operation.
+ 
+J2-1 - Power Supply 
+J2-2 - Ground J2-3 - UART TX J2-4 - UART R
+XPin Configuration 
+J1-1 - Power Supply 
+J1-2 - Ground J1-3 - Blood Detect Logic Output J1-4 - Self Test J1-5 - Zero Confirm Output J1-6 
+–Zero
+INTROTEK150 Executive Drive 
+Edgewood, NY (631) 242-2450  DOC 
+SIZE 
+AREV 
+DATE 
+8/9/13Th
+is document is the exclusive property of Introtek 
+International. N
+o use whatsoever of the information 
+contained hereon, nor reproduction in whole or in part may 
+be made without the express written permission of: 
+INTROTEK INTERNATIONAL  105-0002DOC 
+REV 
+APage 9 of 10 Blood Component Detector 
+Standard Electrical Interface 
+In this mode the BC1 can operate as a slave dev ice to a host computer via the two wire serial 
+connection or by the standard logic interface.  
+The command characters sent to the UART by the host may be either upper or lower case 
+characters.  The command characters sent to the BCD will be echoed back in uppercase as 
+verification that the request has been receiv
+ed.  Immediately following this echoed character the 
+requested data is sent. 
+All data consists of four numer als including leading zeros. 
+The data refresh rate is approximately 100ms. In the Standard Electrical Interf ace mode the blood alarm signal will go to logic high as soon as the 
+blood concentration criterion is exceeded.  In the serial two wire mode the BC1 should be 
+continually queried.  The retur ned value can then be compared to the stored set point value by the 
+host to determine if the blood thres hold level has been reached or exceeded.
+Standard UART Interface User Command
+s: 
+Ctrl <S> (or initial power up) will put the BCD into its default Embedded System Mode. 
+S = Enter and save the Bl ood Detection Set Point 
+The Format is SXXX. Where XXX is the desired value and it is followed by ‘\r’ (Enter). 
+When the set point is changed a G command must be issued to derive and store the new 
+required LED drive current. 
+The range for XXX is 0 to 870. L eading zeros are not required. 
+A received ‘X’ indicates a time out has occurre d and no changes were made. A time out will 
+return an ‘X’ in approximately 3 - 4 seconds. 
+A valid value acceptance will return the value in a 4 digit format ‘XXXX’. 
+A failed attempt will return an ‘F’. 
+INTROTEK150 Executive Drive 
+Edgewood, NY (631) 242-2450  DOC 
+SIZE 
+AREV 
+DATE 
+8/9/13This
+ document is the exclusive property of Introtek 
+International. No us
+e whatsoever of the information 
+contained hereon, nor reproduction in whole or in part may 
+be made without the express written permission of: 
+INTROTEK INTERNATIONAL  105-0002DOC 
+REV 
+APage 10 of 10 Blood Component Detector
+Standard Electrical Interface 
+T = Self Test returns ‘P’ for Pass or ‘F’ for Fail (no changes made).  
+    Note: If the sensor has not been zero ed it will always re turn ‘F’ for Fail. 
+G = GET SELF-TEST DRIVE – Sets and saves the led drive cu
+rrent such that the attenuation 
+achieved during a self-test will be limited to  approximately 40 counts above the set point. 
+   This must be reset every ti me the set point is changed. 
+    The letter ‘G’ will be sent repetitively by the detector until the correct led drive has been 
+obtained.  The attenuation va lue obtained will be sent upon completion of the process.  
+I = INTENSITY – Returns the ra w reading of the detector. When zeroed the value will be 
+approximately 930. As the led in tensity increases and decreases so will the number that is 
+returned. 
+V = Blood Detection Level, Returns ‘VXXXX’ 
+Z = Zero Sensor 
+    Repetitive ‘Z’ characters are sent from t he BC1 to the host as is converges to zero. ‘Y’ 
+character is returned when calibration has completed. 
+Q = ZERO CONFIRM - The ZERO CONFIRM polling  shall be performed only immediately after 
+the ZERO command.  Returns “P” for Pass and “F” for Fail 
+D = Display Blood Detection Set Point, Returns ‘DXXXX’ 
+C = Calibrate, This will adjust Set Point to the physical blood concentration present in the 
+tube.  If the concentration level is > 10 the detector will return string ‘CXXX’. 
+If the value was not accepted an ‘F’ will be returned indicating a failed operation. 
+If the unit is reset an “R” will be  sent to the host computer. 
+INTROTEK

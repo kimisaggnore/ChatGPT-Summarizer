@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+
+    .container {
+      margin-top: 150px;
+      width: 400px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      display: inline-block;
+    }
+
+    .container input[type="text"],
+    .container input[type="api_key"] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .container button {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .container button:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <form method="POST">
+      {% csrf_token %}
+      <!-- <input type="text" placeholder="Username" name="username" required><br> -->
+      <label for="api_key">Please type in your personal open.ai api-key:</label>
+      <input type="api_key" placeholder="open.ai key " name="api_key" value = {{api_key}} required><br>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</body>
+</html>
